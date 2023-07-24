@@ -148,7 +148,8 @@ export const MigrationAlert = () => {
   if (migrationData == null) return null;
   return (
     <AlertDialog
-      isOpen={isOpen && (Able.haveToRecover || SinergyBronze.haveToRecover)}
+      isOpen={false}
+      // isOpen={isOpen && (Able.haveToRecover || SinergyBronze.haveToRecover)}
       leastDestructiveRef={cancelRef}
       onClose={() => setIsOpen(false)}
     >

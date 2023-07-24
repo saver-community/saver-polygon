@@ -53,7 +53,7 @@ export const RewardGetActual = async (Contract, wallet, cycle) => {
 
     const can_claim = await Contract.methods.CanClaim(wallet).call();
 
-    const is_participate_on_this_reward = await Contract.methods.is_participate_on_this_reward(wallet, cycle - 1).call();
+    const is_participate_on_this_reward = cycle > 0 ? await Contract.methods.is_participate_on_this_reward(wallet, cycle - 1).call() : false;
 
     return {
         raised_amount,

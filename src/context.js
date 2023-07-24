@@ -206,7 +206,7 @@ export const SaverProvider = (props) => {
             const sinergy_bronze = await getSinergyBronzeData_ForAble(
                 basicData.addressAccount,
                 basicData.SinergyBronze.contract,
-                basicData.MigrationSinergyBronze.contract
+                // basicData.MigrationSinergyBronze.contract
             );
             const base_reward = await RewardGetData(
                 basicData.Rewards.daily.stablecoin,
@@ -269,9 +269,7 @@ export const SaverProvider = (props) => {
                 basicData.addressAccount,
                 basicData.SinergyBronze.contract,
                 basicData.Able.contract,
-                basicData.SinergySale.contract,
-                basicData.MigrationSinergyBronze.contract,
-                basicData.SinergyBronzeMigration.contract
+                basicData.SinergySale.contract
             );
 
 
@@ -288,8 +286,8 @@ export const SaverProvider = (props) => {
             SinergyBronze.contract,
             Able.contract,
             AbleSale.contract,
-            MigrationSinergyBronze.contract,
-            SinergyBronzeMigration.contract
+            // MigrationSinergyBronze.contract,
+            // SinergyBronzeMigration.contract
         );
 
         const clock = await ClockGetInfo(Clock);
@@ -741,9 +739,7 @@ export const SaverProvider = (props) => {
         const bronzeData = await getSinergyBronzeData_AfterBuyNFT(
             addressAccount,
             SinergyBronze,
-            Able,
-            SinergyBronzeMigration.contract,
-            MigrationSinergyBronze.contract
+            Able
         );
 
         const user = await UserGetData(User, clock.cycle, addressAccount);
@@ -764,8 +760,7 @@ export const SaverProvider = (props) => {
         const bronzeData = await getSinergyBronzeData_AfterChooseFavouriteNFT(
             addressAccount,
             SinergyBronze,
-            AbleSale.contract,
-            MigrationSinergyBronze.contract
+            AbleSale.contract
         );
 
         // Value Reward

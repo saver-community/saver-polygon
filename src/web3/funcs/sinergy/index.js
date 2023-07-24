@@ -25,9 +25,7 @@ export const getSinergyBronzeData_AfterModifyNFT = async (
 export const getSinergyBronzeData_AfterBuyNFT = async (
     addressAccount,
     Sinergy,
-    Able,
-    SinergyBronzeMigrationContract,
-    MigrationContract
+    Able
 ) => {
     const amount = await Sinergy.contract.methods.balanceOf(addressAccount).call();
     const isQualified = Number(amount) > 0;
@@ -36,9 +34,7 @@ export const getSinergyBronzeData_AfterBuyNFT = async (
     const myNFTs = await getMyNFTs(
         Sinergy.contract,
         addressAccount,
-        amount,
-        SinergyBronzeMigrationContract,
-        MigrationContract
+        amount
     );
 
     Sinergy.amount = amount;
@@ -54,15 +50,13 @@ export const getSinergyBronzeData_AfterChooseFavouriteNFT = async (
     addressAccount,
     Sinergy,
     ContractAbleSale,
-    MigrationContract,
 ) => {
     const favouriteNFT_ID = await Sinergy.contract.methods.favourite_nft(addressAccount).call();
 
     const favouriteNFT = await getNFT(
         Sinergy.contract,
         favouriteNFT_ID,
-        ContractAbleSale,
-        MigrationContract
+        ContractAbleSale
     );
 
     Sinergy.favouriteNFT = favouriteNFT;
@@ -143,9 +137,7 @@ export const getSinergyBronzeData = async (
     addressAccount,
     ContractSinergy,
     ContractST,
-    ContractAbleSale,
-    MigrationContract,
-    ContractSinergyMigration
+    ContractAbleSale
 ) => {
 
     const amount = await ContractSinergy.methods.balanceOf(addressAccount).call();
@@ -157,9 +149,7 @@ export const getSinergyBronzeData = async (
     const myNFTs = await getMyNFTs(
         ContractSinergy, 
         addressAccount, 
-        amount, 
-        ContractSinergyMigration, 
-        MigrationContract
+        amount,
     );
     const favouriteNFT_ID = await ContractSinergy.methods.favourite_nft(addressAccount).call();
     let favouriteNFT = {
@@ -171,8 +161,7 @@ export const getSinergyBronzeData = async (
     favouriteNFT = await getNFT(
         ContractSinergy,
         favouriteNFT_ID,
-        ContractAbleSale,
-        MigrationContract
+        ContractAbleSale
     );
 
 
@@ -186,7 +175,7 @@ export const getSinergyBronzeData = async (
     const autoReferenceID = await getAutoReference(ContractST, ContractSinergy, addressAccount);
     const nextNFT = getNextNFT();
 
-    const isRecover = await MigrationContract.methods.isRecover(addressAccount).call();
+    const isRecover = true; //await MigrationContract.methods.isRecover(addressAccount).call();
 
     const nfts_qualified = await ContractSinergy.methods.nfts_qualified().call();
 
@@ -214,10 +203,10 @@ export const getSinergyBronzeData = async (
     };
 }
 
-export const getSinergyBronzeData_ForAble = async (addressAccount, ContractSinergy, MigrationContract) => {
+export const getSinergyBronzeData_ForAble = async (addressAccount, ContractSinergy) => {
     const amount = await ContractSinergy.methods.balanceOf(addressAccount).call();
 
-    const isRecover = await MigrationContract.methods.isRecover(addressAccount).call();
+    const isRecover = true; //await MigrationContract.methods.isRecover(addressAccount).call();
 
     return {
         contract: ContractSinergy,

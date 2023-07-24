@@ -36,11 +36,9 @@ export const getNextNFT = () => {
 }
 
 export const getMyNFTs = async (
-    ContractNFT, 
-    accountAddress, 
-    nftAmount, 
-    ContractNFTMigration, 
-    MigrationContract
+    ContractNFT,
+    accountAddress,
+    nftAmount
 ) => {
     var myNftIDs = [];
     var myNFTs = [];
@@ -59,10 +57,8 @@ export const getMyNFTs = async (
     // Get the struct of these NFTs.
     for (var i = 0; i < myNftIDs.length; i++) {
         const nft = await getBasicNFT(
-            ContractNFT, 
-            myNftIDs[i], 
-            ContractNFTMigration,
-            MigrationContract
+            ContractNFT,
+            myNftIDs[i]
         );
         myNFTs.push(nft);
     }
@@ -70,7 +66,7 @@ export const getMyNFTs = async (
     return myNFTs;
 };
 
-export const getBasicNFT = async (Contract, tokenID, ContractMigration, MigrationContract) => {
+export const getBasicNFT = async (Contract, tokenID) => {
     let ownerAddress = null;
     try {
         ownerAddress = await Contract.methods.ownerOf(tokenID).call();
@@ -79,19 +75,16 @@ export const getBasicNFT = async (Contract, tokenID, ContractMigration, Migratio
         ownerAddress = NULL_ADDRESS;
     }
 
-    const isRecover = await MigrationContract.methods.isRecover(ownerAddress).call();
+    const isRecover = true; //await MigrationContract.methods.isRecover(ownerAddress).call();
 
     let data = null;
 
-    if (isRecover || tokenID > INITIAL_AMOUNT_NFTS) {
-        // Obtenemos la informacion del contrato actual.
-        data = await getNFTBasicInfo(Contract, tokenID);
-        const activeRewardsClaimedWEI = await Contract.methods.nft_affiliate_rewards_earned(tokenID).call();
-        const activeRewardsClaimed = web3.utils.fromWei(activeRewardsClaimedWEI, 'ether');
-        data.activeRewardsClaimed = activeRewardsClaimed;
-    } else {
-        data = await getNFTBasicInfo(ContractMigration, tokenID);
-    }
+    // Obtenemos la informacion del contrato actual.
+    data = await getNFTBasicInfo(Contract, tokenID);
+    const activeRewardsClaimedWEI = await Contract.methods.nft_affiliate_rewards_earned(tokenID).call();
+    const activeRewardsClaimed = web3.utils.fromWei(activeRewardsClaimedWEI, 'ether');
+    data.activeRewardsClaimed = activeRewardsClaimed;
+
 
     data.ownerAddress = ownerAddress;
     data.isRecover = isRecover;
@@ -99,60 +92,60 @@ export const getBasicNFT = async (Contract, tokenID, ContractMigration, Migratio
     return data;
 }
 
-export const getBasicReferences = async (ContractNFT, tokenID, MigrationContract) => {
+export const getBasicReferences = async (ContractNFT, tokenID) => {
     const totalAmountReferences = await ContractNFT.methods.get_total_amount_references(tokenID).call();
 
     // First Level
     const firstLevelAmount = await ContractNFT.methods.get_first_level_amount_reference(tokenID).call();
     const firstLevelReferences = null;
-    const first_level_references_recover = await MigrationContract.methods.first_level_references_recover(tokenID).call();
+    const first_level_references_recover = 0//await MigrationContract.methods.first_level_references_recover(tokenID).call();
 
     // Second Level
     const secondLevelAmount = await ContractNFT.methods.get_second_level_amount_reference(tokenID).call();
     const seocndLevelReferences = null;
-    const second_level_references_recover = await MigrationContract.methods.second_level_references_recover(tokenID).call();
+    const second_level_references_recover = 0//await MigrationContract.methods.second_level_references_recover(tokenID).call();
 
 
     // Third Level
     const thirdLevelAmount = await ContractNFT.methods.get_third_level_amount_reference(tokenID).call();
     const thirdLevelReferences = null;
-    const third_level_references_recover = await MigrationContract.methods.third_level_references_recover(tokenID).call();
+    const third_level_references_recover = 0//await MigrationContract.methods.third_level_references_recover(tokenID).call();
 
 
     // Four Level
     const fourLevelAmount = await ContractNFT.methods.get_four_level_amount_reference(tokenID).call();
     const fourLevelReferences = null;
-    const four_level_references_recover = await MigrationContract.methods.four_level_references_recover(tokenID).call();
+    const four_level_references_recover = 0//await MigrationContract.methods.four_level_references_recover(tokenID).call();
 
 
     // Five Level
     const fiveLevelAmount = await ContractNFT.methods.get_five_level_amount_reference(tokenID).call();
     const fiveLevelReferences = null;
-    const five_level_references_recover = await MigrationContract.methods.five_level_references_recover(tokenID).call();
+    const five_level_references_recover = 0//await MigrationContract.methods.five_level_references_recover(tokenID).call();
 
 
     // Six Level
     const sixLevelAmount = await ContractNFT.methods.get_six_level_amount_reference(tokenID).call();
     const sixLevelReferences = null;
-    const six_level_references_recover = await MigrationContract.methods.six_level_references_recover(tokenID).call();
+    const six_level_references_recover = 0//await MigrationContract.methods.six_level_references_recover(tokenID).call();
 
 
     // Seven Level
     const sevenLevelAmount = await ContractNFT.methods.get_seven_level_amount_reference(tokenID).call();
     const sevenLevelReferences = null;
-    const seven_level_references_recover = await MigrationContract.methods.seven_level_references_recover(tokenID).call();
+    const seven_level_references_recover = 0//await MigrationContract.methods.seven_level_references_recover(tokenID).call();
 
 
     // Eight Level
     const eightLevelAmount = await ContractNFT.methods.get_eight_level_amount_reference(tokenID).call();
     const eightLevelReferences = null;
-    const eight_level_references_recover = await MigrationContract.methods.eight_level_references_recover(tokenID).call();
+    const eight_level_references_recover = 0//await MigrationContract.methods.eight_level_references_recover(tokenID).call();
 
 
     // Nine Level
     const nineLevelAmount = await ContractNFT.methods.get_nine_level_amount_reference(tokenID).call();
     const nineLevelReferences = null;
-    const nine_level_references_recover = await MigrationContract.methods.nine_level_references_recover(tokenID).call();
+    const nine_level_references_recover = 0//await MigrationContract.methods.nine_level_references_recover(tokenID).call();
 
 
     const references = {
@@ -578,8 +571,7 @@ export const getSinergyBronze_AfterSell = async (SinergyBronze, ContractAbleSale
 export const getNFT = async (
     ContractNFT,
     tokenID,
-    ContractAbleSale,
-    MigrationContract
+    ContractAbleSale
 ) => {
     const name = await ContractNFT.methods.get_nft_name(tokenID).call();
     const inscription = await ContractNFT.methods.get_nft_inscription(tokenID).call();
@@ -611,7 +603,7 @@ export const getNFT = async (
         can_selling_by_time
     };
 
-    const references = await getBasicReferences(ContractNFT, tokenID, MigrationContract);
+    const references = await getBasicReferences(ContractNFT, tokenID);
     const timestampCreated = await ContractNFT.methods.get_nft_timestamp_created(tokenID).call();
     const dateCreated = unixToDate(timestampCreated);
     return {

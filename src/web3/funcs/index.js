@@ -28,7 +28,7 @@ import { getHolders, getLastStableCoinDistribute, getSaverMinted, getSaverPrice,
 import { GetRecoverState, getMigrationData } from './migration';
 import { ClockGetInfo } from './clock';
 
-export const URL_WEB = "https://saver.community";
+export const URL_WEB = "https://saver-community-polygon.web.app";
 
 
 export const BASE_URL_NFT_IMAGES = "https://ipfs.io/ipfs";
@@ -39,15 +39,16 @@ export const CID_NFT_JSON = "QmXfyjgJq3PSc69HZxGKH17sGguwQjy6LWdJdvMfYoyqtq";
 // Polygon Mainnet: 'https://matic.getblock.io/5b466210-c284-40b8-9c7a-5ea4f035a9b2/mainnet/';
 // Moonbase Alpha: 'https://rpc.api.moonbase.moonbeam.network';
 // Moonbeam Mainnet: 'https://rpc.api.moonbeam.network';
-const BSC_MAINNET_RPC = 'https://rpc.api.moonbeam.network';
+const BSC_MAINNET_RPC = 'https://matic.getblock.io/5b466210-c284-40b8-9c7a-5ea4f035a9b2/mainnet/';
 
 export const MAIN_CURRENCY = "DAI";
-export const NATIVE_CRYPTO = "GLMR";
+export const NATIVE_CRYPTO = "MATIC";
 
 // Polygon Testnet: 80001
+// Polygon Mainnet: 137
 // Moonbase Alpha: 1287
 // Moonbeam Mainnet: 1284
-export const CHAIN_ID = 1284
+export const CHAIN_ID = 137
 
 export const GAS_PRICE = "5";
 
@@ -62,26 +63,26 @@ const Contract = require('web3-eth-contract');
 Contract.setProvider(BSC_MAINNET_RPC);
 
 // Contract Address
-export const OWNERS_CONTRACT_ADDRESS = "0xF7Ca5aeb3d2DBC0012f153224e22a1757c8f83F5"; // Addresses Contract.
-export const CLOCK_CONTRACT_ADDRESS = "0xDF8109567Ca3f9b5Aca54ffB76e8a783142BcA45"; 
-export const USER_CONTRACT_ADDRESS = "0xE2874a3132141BEad0f6CE81910890a623B5f8F6";
-export const TEST_CONTRACT_ADDRESS = "0x4c8e26975B9B44637796034A377D42BC276D8b83"; 
-export const ABLE_CONTRACT_ADDRESS = "0xA0cB3bB440E98595deA168C56f8e5b06CE9636FC"; 
-export const SINERGY_BRONZE_CONTRACT_ADDRESS = "0xe519E164cd1F8D3474289fF4e52C16699EC9ea17";
-export const MIGRATION_SINERGY_BRONZE_CONTRACT_ADDRESS = "0x62b97Bb6FF05Df90255b73aD9af063dfd35Dd21D";
-export const SINERGY_SALE_CONTRACT_ADDRESS = "0x8849E9BD43c7b525F0EE5e881b815e68E1E86F59";
-export const MIGRATION_SINERGY_SALE_CONTRACT_ADDRESS = "0xcbBA637211C34C7F56Fd6bdbD9f7E5b594292305";
-export const STABLECOIN_BASE_REWARD_ADDRESS = "0xFcd33fcc4e90ef04652fd1189Ad5945516BfdD18";
+export const OWNERS_CONTRACT_ADDRESS = "0x9357B6ad235B23a07AB79920fF02cF472Dd22A99"; // Addresses Contract.
+export const CLOCK_CONTRACT_ADDRESS = "0xdDeAa4b5efE8Cbfb18121a15762cF64b8A008727"; 
+export const USER_CONTRACT_ADDRESS = "0x54559BC3c6E5B644be2b38639F46a09461DF6459";
+export const TEST_CONTRACT_ADDRESS = "0x17c3358F9Aa2D85E49d502EFBc27c9289ef913aA"; 
+export const ABLE_CONTRACT_ADDRESS = "0x831548ceccf006D865fE88d3F88E0d3b577453F4"; 
+export const SINERGY_BRONZE_CONTRACT_ADDRESS = "0x4E8F5dC8c0f21992116Aac2458b0Bded98E11F13";
+export const MIGRATION_SINERGY_BRONZE_CONTRACT_ADDRESS = "0xd42B6b3f905459f99E2c9442d65c0d7DD15111Bf";
+export const SINERGY_SALE_CONTRACT_ADDRESS = "0x2C7Ae6A3449df8de65aD15eF8960bf765B8e7b02";
+export const MIGRATION_SINERGY_SALE_CONTRACT_ADDRESS = "0xf4DD0392A45E4a11d3Aad302ff4A015cEe0D21b8";
+export const STABLECOIN_BASE_REWARD_ADDRESS = "0xD15506c3Dd6f2d110130d28b9d74bb2ea1ec8BDb";
 
 
-export const STABLECOIN_VALUE_REWARD_ADDRESS = "0xd3D4A95d6A6b2a78eEEAB47E82A5F37917EE04b2";
-export const ABLE_VALUE_REWARD_ADDRESS = "0x2E98E76EEc7C69e9bbf87857fd099Ee851D4e5c4";
+export const STABLECOIN_VALUE_REWARD_ADDRESS = "0x31060b3b7814F1e293036d34A82732B1d8f83058";
+export const ABLE_VALUE_REWARD_ADDRESS = "0x0E61BaDD50d1497AF9B2ea71390aF88b70b1E9dE";
 
-export const STABLECOIN_CONSTANCY_REWARD_ADDRESS = "0x767C3E921272F4F4648435A47C4fF09cb4f3c87f";
-export const ABLE_CONSTANCY_REWARD_ADDRESS = "0x0cc78F063F8f4EDEbD174c69bDD7EE0fAaa6BFEb";
+export const STABLECOIN_CONSTANCY_REWARD_ADDRESS = "0x08e98f3205597c639665D26b78a843416A77dBB0";
+export const ABLE_CONSTANCY_REWARD_ADDRESS = "0x2BF77C5C00Aa1eE53c64450fC045A67437FBCfa4";
 
-export const STABLECOIN_CONFIDENCE_REWARD_ADDRESS = "0xe688784F840486d925B97936b8D1f70509916A07";
-export const ABLE_CONFIDENCE_REWARD_ADDRESS = "0xEF29c67496Fac5A9D4E6c5cca67cAEDfed9005b6";
+export const STABLECOIN_CONFIDENCE_REWARD_ADDRESS = "0x13D620BF44A23f6c6E89e1E22980d98986e4c81C";
+export const ABLE_CONFIDENCE_REWARD_ADDRESS = "0xfB45BCb936B055721Ca65E9FD0229DC0e319DD6A";
 
 // ------------------------
 
@@ -96,28 +97,28 @@ export const SINERGY_BRONZE_MIGRATION_ADDRESS = "0xaeFDeD1Efb9f370F3663493755a1D
 export const MIGRATION_SINERGY_BRONZE_APRIL_2023 = "0x4559FC7347f1E9CaC47Bf4414ed50197fd00383E"; // Abril 2023
 export const SINERGY_SALE_MIGRATION_CONTRACT_ADDRESS = "0x899A11BEC1fC578E75523Cdc079d9CC767884aB4"; // Abril 2023  
 export const TRIPLE_MIGRATION_ADDRESS = "0x38e43FCEEE68373e08a30714123010b8d841364d";
-export const INITIAL_AMOUNT_NFTS = 1301;
+export const INITIAL_AMOUNT_NFTS = 0;
 
 // Polygon Testnet: "0x358cBaa85a38Ab70726e65a0c1986d225210B1EF"
-// Polygon Mainnet: "0x1027b66cb2Be166A6ABfB12b9cFBBE7a83911151"
+// Polygon Mainnet (mios): "0x1027b66cb2Be166A6ABfB12b9cFBBE7a83911151"
 // Moonbase Alpha: "0xEa9f365Bdf33B80b5145ED26D1b92229280DA6D3"
 // Moonbeam Mainnet (mios): "0x4E8F5dC8c0f21992116Aac2458b0Bded98E11F13"
 // Moonbeam Mainnet: "0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b"
-export const USDC_CONTRACT_ADDRESS = "0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b";
+export const USDC_CONTRACT_ADDRESS = "0x1027b66cb2Be166A6ABfB12b9cFBBE7a83911151";
 
 // Polygon Testnet: "0x1989E06A6ae35D3624331107a1a07bE8c9eB579B"
-// Polygon Mainnet: "0xc2395378e8EDCEA662DaeEe9Aa3E2804a114DC11"
+// Polygon Mainnet (mios): "0xc2395378e8EDCEA662DaeEe9Aa3E2804a114DC11"
 // Moonbase Alpha: "0x358cBaa85a38Ab70726e65a0c1986d225210B1EF"
 // Moonbeam Mainnet (mios): "0xB3E9c83c80120764a5B52D8B41B43895F7c04685"
 // Moonbeam Mainnet: "0xeFAeeE334F0Fd1712f9a8cc375f427D9Cdd40d73"
-export const USDT_CONTRACT_ADDRESS = "0xeFAeeE334F0Fd1712f9a8cc375f427D9Cdd40d73";
+export const USDT_CONTRACT_ADDRESS = "0x0Cb69130D01301D0B20F3124Ce63a2131509A99e";
 
 // Polygon Testnet: "0x76bE64285ddcCB5B45a00B7671cF030dfc009E8B"
-// Polygon Mainnet: "0xEa9f365Bdf33B80b5145ED26D1b92229280DA6D3"
+// Polygon Mainnet (mios): "0xEa9f365Bdf33B80b5145ED26D1b92229280DA6D3"
 // Moonbase Alpha: "0x1027b66cb2Be166A6ABfB12b9cFBBE7a83911151"
 // Moonbeam Mainnet (mios): DAI => 0xB856De7DAFf71A0d7eAFD4CC22A7db6F762179de  BUSD => "0x831548ceccf006D865fE88d3F88E0d3b577453F4"
 // Moonbeam Mainnet: DAI => "0x765277EebeCA2e31912C9946eAe1021199B39C61" BUSD => "0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F"
-export const STABLE_COIN_CONTRACT_ADDRESS = "0x765277EebeCA2e31912C9946eAe1021199B39C61";
+export const STABLE_COIN_CONTRACT_ADDRESS = "0xEa9f365Bdf33B80b5145ED26D1b92229280DA6D3";
 
 export const COMMUNITY_WALLET = "0xc8895f6f85D870589C42fd6d531c855bddD27B0f";
 export const DEVELOPMENT_WALLET = "0x9060723c22dE586c2fA5eFa07A7743F6f4a935f5";
@@ -265,37 +266,37 @@ export const loadBasicData = async () => {
     const StablecoinBaseReward = GetObjContract(IBaseReward.output.abi, STABLECOIN_BASE_REWARD_ADDRESS);
         
     // Migration Contracts
-    const MigrationSinergyBronze = GetObjContract(IMigrationSinergy.output.abi, MIGRATION_SINERGY_BRONZE_CONTRACT_ADDRESS);
-    const MigrationSinergySale = GetObjContract(IMigrationSale.output.abi, MIGRATION_SINERGY_SALE_CONTRACT_ADDRESS)
+    const MigrationSinergyBronze = null //GetObjContract(IMigrationSinergy.output.abi, MIGRATION_SINERGY_BRONZE_CONTRACT_ADDRESS);
+    const MigrationSinergySale = null //GetObjContract(IMigrationSale.output.abi, MIGRATION_SINERGY_SALE_CONTRACT_ADDRESS)
 
     // Previous contracts
-    const AbleMigration = GetObjContract(IAbleMigration.output.abi, ABLE_MIGRATION_CONTRACT_ADDRESS); // Abril 2023
-    const AbleFirstMigration = GetObjContract(IAbleMigration.output.abi, ABLE_FIRST_MIGRATION_CONTRACT_ADDRESS); // Noviembre 2022
-    const SinergyBronzeMigration = GetObjContract(ISinergyMigrationContract.output.abi, SINERGY_BRONZE_MIGRATION_ADDRESS);
-    const SinergyBronzeFirstMigration = GetObjContract(ISinergyMigrationContract.output.abi, SINERGY_BRONZE_FIRST_MIGRATION_ADDRESS);
-    const TripleMigration = GetObjContract(IERC20.output.abi, TRIPLE_MIGRATION_ADDRESS);
+    const AbleMigration = null //GetObjContract(IAbleMigration.output.abi, ABLE_MIGRATION_CONTRACT_ADDRESS); // Abril 2023
+    const AbleFirstMigration = null //GetObjContract(IAbleMigration.output.abi, ABLE_FIRST_MIGRATION_CONTRACT_ADDRESS); // Noviembre 2022
+    const SinergyBronzeMigration = null //GetObjContract(ISinergyMigrationContract.output.abi, SINERGY_BRONZE_MIGRATION_ADDRESS);
+    const SinergyBronzeFirstMigration = null //GetObjContract(ISinergyMigrationContract.output.abi, SINERGY_BRONZE_FIRST_MIGRATION_ADDRESS);
+    const TripleMigration = null //GetObjContract(IERC20.output.abi, TRIPLE_MIGRATION_ADDRESS);
 
     // Account & ChainID
     const addressAccount = await getAccount();
     const chain_id = await window.web3.eth.getChainId();
 
     const is_recover_able = await Able.contract.methods.isRecover(addressAccount).call();
-    const is_recover_sinergy = await MigrationSinergyBronze.contract.methods.isRecover(addressAccount).call();
+    const is_recover_sinergy = true; //await MigrationSinergyBronze.contract.methods.isRecover(addressAccount).call();
 
     let Migration = null;
 
     if (!is_recover_able || !is_recover_sinergy) {
         start_time = Date.now();
         window.document.getElementById('loading').innerHTML = "Cargando Migracion...";
-        Migration = await getMigrationData(
-            Able.contract,
-            AbleFirstMigration.contract,
-            AbleMigration.contract,
-            MigrationSinergyBronze.contract,
-            SinergyBronzeMigration.contract,
-            TripleMigration.contract, 
-            addressAccount,
-        );
+        Migration = null;//await getMigrationData(
+        //     Able.contract,
+        //     AbleFirstMigration.contract,
+        //     AbleMigration.contract,
+        //     MigrationSinergyBronze.contract,
+        //     SinergyBronzeMigration.contract,
+        //     TripleMigration.contract, 
+        //     addressAccount,
+        // );
         end_time = Date.now();
         console.log("Tiempo de carga (migracion): ", ((end_time - start_time) / 1000).toString());
     }
