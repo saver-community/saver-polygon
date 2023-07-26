@@ -263,8 +263,7 @@ export const ShowLevelReferenceNFT = ({ nft, level }) => {
   };
 
   const showRecoverLevel = () => {
-    if (loaded) return false;
-
+    return false;
   };
 
   // Component
