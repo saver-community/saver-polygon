@@ -15,8 +15,7 @@ export const SearchNFT = ({ Sinergy, generation }) => {
   const handleChange = (event) => setSearchValue(event.target.value);
 
   // Context
-  const { SinergyBronzeMigration, MigrationSinergyBronze } = useProvider();
-
+  
   // Methods
   const handleGetNFT = async () => {
     setLoading(true);
@@ -36,9 +35,7 @@ export const SearchNFT = ({ Sinergy, generation }) => {
     // En caso de Bronze...
     const nftData = await getBasicNFT(
       Sinergy.contract,
-      searchValue,
-      SinergyBronzeMigration,
-      MigrationSinergyBronze.contract
+      searchValue
     );
     
     setNft(nftData);

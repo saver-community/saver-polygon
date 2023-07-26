@@ -265,53 +265,6 @@ export const ShowLevelReferenceNFT = ({ nft, level }) => {
   const showRecoverLevel = () => {
     if (loaded) return false;
 
-    if (nft.id > INITIAL_AMOUNT_NFTS) return false;
-    switch (level) {
-      case "Primera":
-        return (
-          !nft.references.firstLevel.recover &&
-          nft.references.firstLevel.amount > 0
-        );
-      case "Segunda":
-        return (
-          !nft.references.secondLevel.recover &&
-          nft.references.secondLevel.amount > 0
-        );
-      case "Tercera":
-        return (
-          !nft.references.thirdLevel.recover &&
-          nft.references.thirdLevel.amount > 0
-        );
-      case "Cuarta":
-        return (
-          !nft.references.fourLevel.recover &&
-          nft.references.fourLevel.amount > 0
-        );
-      case "Quinta":
-        return (
-          !nft.references.fiveLevel.recover &&
-          nft.references.fiveLevel.amount > 0
-        );
-      case "Sexta":
-        return (
-          !nft.references.sixLevel.recover && nft.references.sixLevel.amount > 0
-        );
-      case "Septima":
-        return (
-          !nft.references.sevenLevel.recover &&
-          nft.references.sevenLevel.amount > 0
-        );
-      case "Octava":
-        return (
-          !nft.references.eightLevel.recover &&
-          nft.references.eightLevel.amount > 0
-        );
-      case "Novena":
-        return (
-          !nft.references.nineLevel.recover &&
-          nft.references.nineLevel.amount > 0
-        );
-    }
   };
 
   // Component
