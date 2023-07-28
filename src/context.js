@@ -309,9 +309,7 @@ export const SaverProvider = (props) => {
                 basicData.addressAccount,
                 basicData.SinergyBronze.contract,
                 basicData.Able.contract,
-                basicData.SinergySale.contract,
-                basicData.MigrationSinergyBronze.contract,
-                basicData.SinergyBronzeMigration.contract
+                basicData.SinergySale.contract
             );
 
             const user = await UserGetData(

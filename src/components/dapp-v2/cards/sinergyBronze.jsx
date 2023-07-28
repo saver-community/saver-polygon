@@ -679,7 +679,7 @@ export const SinergyBronzeCard = ({ nft, owner }) => {
                       </Text>
                       <Spacer />
                       <Text fontWeight="bold" color="white">
-                        {nft.activeRewardsClaimed} {MAIN_CURRENCY}
+                        {Number(nft.activeRewardsClaimed).toFixed(2)} {MAIN_CURRENCY}
                       </Text>
                       <Box w="5px" />
                     </HStack>
