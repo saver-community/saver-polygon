@@ -189,7 +189,7 @@ export default function BuyNFT_Affiliate() {
 
             if (rec) {
               clearInterval(interval);
-              await uploadBuyNFT_Bronze();
+              // await uploadBuyNFT_Bronze();
               setLoading(false);
               setInscription("");
               setName("");
