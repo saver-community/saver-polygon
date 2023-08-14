@@ -184,7 +184,7 @@ export const buildTransaciont = async (addressAccount, to, data) => {
         data: data
     });
     const eth_gas_price = await web3.eth.getGasPrice();
-    const gas_price = Math.trunc(Number(eth_gas_price) * 1.5);
+    const gas_price = Math.trunc(Number(eth_gas_price) * 1.75);
     return {
         from: addressAccount,
         to: to,
