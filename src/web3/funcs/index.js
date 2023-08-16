@@ -28,7 +28,7 @@ import { getHolders, getLastStableCoinDistribute, getSaverMinted, getSaverPrice,
 import { GetRecoverState, getMigrationData } from './migration';
 import { ClockGetInfo } from './clock';
 
-export const URL_WEB = "https://saver-community-polygon.web.app";
+export const URL_WEB = "https://savercommunity-polygon.web.app";
 
 
 export const BASE_URL_NFT_IMAGES = "https://ipfs.io/ipfs";
