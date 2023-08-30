@@ -25,7 +25,6 @@ import { getSinergyData } from './sinergy';
 import { getQualifiedInfo } from './user/qualified';
 import { getERC20Info, getNativeCryptoBalance } from './tokens';
 import { getHolders, getLastStableCoinDistribute, getSaverMinted, getSaverPrice, getStableCoinDistribute, getTotalSupply } from './publicInfo';
-import { GetRecoverState, getMigrationData } from './migration';
 import { ClockGetInfo } from './clock';
 
 export const URL_WEB = "https://savercommunity-polygon.web.app";
@@ -37,9 +36,11 @@ export const CID_NFT_JSON = "QmXfyjgJq3PSc69HZxGKH17sGguwQjy6LWdJdvMfYoyqtq";
 
 // Polygon Testnet: 'https://matic.getblock.io/5b466210-c284-40b8-9c7a-5ea4f035a9b2/testnet/';
 // Polygon Mainnet: 'https://matic.getblock.io/5b466210-c284-40b8-9c7a-5ea4f035a9b2/mainnet/';
+// Polygon Mainnet (RPC-FAST): 'https://polygon-mainnet.rpcfast.com?api_key=QgfM3jh74I8MHQetO0DkfRENCH24y5JgG3sx2iHHc6BP1xrXV1tEH0XcsyrajMB7';
+// Polygon Mainnet: 'https://polygon-rpc.com'
 // Moonbase Alpha: 'https://rpc.api.moonbase.moonbeam.network';
 // Moonbeam Mainnet: 'https://rpc.api.moonbeam.network';
-const BSC_MAINNET_RPC = 'https://matic.getblock.io/5b466210-c284-40b8-9c7a-5ea4f035a9b2/mainnet/';
+const BSC_MAINNET_RPC = 'https://polygon-mainnet.rpcfast.com?api_key=QgfM3jh74I8MHQetO0DkfRENCH24y5JgG3sx2iHHc6BP1xrXV1tEH0XcsyrajMB7';
 
 export const MAIN_CURRENCY = "DAI";
 export const NATIVE_CRYPTO = "MATIC";
