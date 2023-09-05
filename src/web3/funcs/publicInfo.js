@@ -1,7 +1,8 @@
 import { STABLE_COIN_FORMAT } from ".";
+import { HandleRequest } from "./requests";
 
 export const getTotalSupply = async (ContractST) => {
-    const tC = await ContractST.methods.totalSupply().call();
+    const tC = await HandleRequest(ContractST.methods.totalSupply())
     const tokensCirculation = await web3.utils.fromWei(tC, 'ether');
 
     return Number(tokensCirculation).toFixed(4);
@@ -9,7 +10,7 @@ export const getTotalSupply = async (ContractST) => {
 
 export const getSaverMinted = async (ContractST) => {
     // const initialSupplyWEI = await ContractST.methods.initialSupply().call();
-    const totalSupplyWEI = await ContractST.methods.totalSupply().call();
+    const totalSupplyWEI = await HandleRequest(ContractST.methods.totalSupply());
 
     // const initialSupply = await web3.utils.fromWei(initialSupplyWEI, 'ether');
     const totalSupply = await web3.utils.fromWei(totalSupplyWEI, 'ether');
@@ -27,7 +28,7 @@ export const getStableCoinDistribute = async (
     ConstancyReward,
     ConfidenceReward
 ) => {
-
+    // Continuar aca..
     const base_reward_wei = await BaseReward.contract.methods.total_distributed().call();
     const base_reward = await web3.utils.fromWei(base_reward_wei, STABLE_COIN_FORMAT);
 

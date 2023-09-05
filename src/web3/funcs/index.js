@@ -5,11 +5,7 @@ import IBaseReward from '../ABI/Rewards/BaseReward.json';
 import IValueReward from '../ABI/Rewards/ValueReward.json';
 import IConstancyReward from '../ABI/Rewards/ConstancyReward.json';
 import IConfidenceReward from '../ABI/Rewards/ConfidenceReward.json';
-import IMigrationSale from '../ABI/Migration/MigrationSale.json';
-import IMigrationSinergy from '../ABI/Migration/MigrationSinergy.json';
-import ISinergyMigrationContract from '../ABI/Migration/Contracts/Sinergy.json';
 import IAble from '../ABI/Able.json';
-import IAbleMigration from '../ABI/Migration/Contracts/Able.json';
 import IClock from '../ABI/Clock.json';
 import IERC20 from '../ABI/ERC20.json';
 import ISinergy from '../ABI/Sinergy.json';
@@ -26,6 +22,7 @@ import { getQualifiedInfo } from './user/qualified';
 import { getERC20Info, getNativeCryptoBalance } from './tokens';
 import { getHolders, getLastStableCoinDistribute, getSaverMinted, getSaverPrice, getStableCoinDistribute, getTotalSupply } from './publicInfo';
 import { ClockGetInfo } from './clock';
+import { HandleRequest } from './requests';
 
 export const URL_WEB = "https://saver-polygon.vercel.app";
 
@@ -40,7 +37,7 @@ export const CID_NFT_JSON = "QmXfyjgJq3PSc69HZxGKH17sGguwQjy6LWdJdvMfYoyqtq";
 // Polygon Mainnet: 'https://polygon-rpc.com'
 // Moonbase Alpha: 'https://rpc.api.moonbase.moonbeam.network';
 // Moonbeam Mainnet: 'https://rpc.api.moonbeam.network';
-const BSC_MAINNET_RPC = 'https://polygon-mainnet.rpcfast.com?api_key=QgfM3jh74I8MHQetO0DkfRENCH24y5JgG3sx2iHHc6BP1xrXV1tEH0XcsyrajMB7';
+const BSC_MAINNET_RPC = 'https://polygon-rpc.com';
 
 export const MAIN_CURRENCY = "DAI";
 export const NATIVE_CRYPTO = "MATIC";
@@ -145,7 +142,7 @@ export const getDataWeb3 = async () => {
     const StablecoinConfidenceReward = GetObjContract(IConfidenceReward.output.abi, STABLECOIN_CONFIDENCE_REWARD_ADDRESS);
     const Clock = GetObjContract(IClock.output.abi, CLOCK_CONTRACT_ADDRESS);
 
-    const cycle = await Clock.contract.methods.cycle().call();
+    const cycle = await HandleRequest(Clock.contract.methods.cycle());
 
     // Web3
     const tokensCirculation = await getTotalSupply(ContractST);
