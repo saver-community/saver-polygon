@@ -27,7 +27,7 @@ import { getERC20Info, getNativeCryptoBalance } from './tokens';
 import { getHolders, getLastStableCoinDistribute, getSaverMinted, getSaverPrice, getStableCoinDistribute, getTotalSupply } from './publicInfo';
 import { ClockGetInfo } from './clock';
 
-export const URL_WEB = "https://savercommunity-polygon.web.app";
+export const URL_WEB = "https://saver-polygon.vercel.app";
 
 
 export const BASE_URL_NFT_IMAGES = "https://ipfs.io/ipfs";
