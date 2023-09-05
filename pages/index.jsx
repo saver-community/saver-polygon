@@ -1,10 +1,11 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
 import { loadWeb3Data } from "../src/web3/funcs";
 import { useProvider } from "../src/context";
 
 // Components
-import { VStack, Box } from "@chakra-ui/react";
+import { VStack, Box, Spacer } from "@chakra-ui/react";
 import { NavBar } from "../src/components/navBar";
 import { ShowDapp } from "../src/subPages/showDapp";
 import { TheDivider } from "../src/components/theDivider";
@@ -13,6 +14,7 @@ import { InfoStableCoin } from "../src/subPages/infoStableCoin";
 import { InfoSaverUSDC } from "../src/subPages/infoSaverUSDC";
 import { RoadMap } from "../src/subPages/roadMap";
 import { Footer } from "../src/subPages/footer";
+import { Loading } from "../src/components/dapp-v2/loading";
 
 const Home = () => {
   // Context
@@ -25,16 +27,10 @@ const Home = () => {
     setSaverMinted,
   } = useProvider();
 
+  const router = useRouter();
   // React useEffect
   React.useEffect(() => {
-    loadWeb3Data().then((res) => {
-      setSaverCirculation(res.tokensCirculation);
-      setSaverHolders(res.holders);
-      setStableCoinDistributed(res.stableCoinDistribute);
-      setLastStableCoinDistribute(res.stableCoinLastDistribute);
-      setSaverPrice(res.saverPrice);
-      setSaverMinted(res.saverMinted);
-    });
+    router.push('/dapp');
   }, []);
 
   return (
@@ -47,21 +43,10 @@ const Home = () => {
         />
         <meta name="image" content="https://i.ibb.co/z7hxTvw/SAVER-TOKEN.png" />
       </Head>
-
-      <VStack w="full">
-        <Box h="20px" />
-        <NavBar />
-        <ShowDapp />
-        <TheDivider h={true} />
-        <InfoSaver />
-        <TheDivider h={true} />
-        <InfoStableCoin />
-        <TheDivider h={true} />
-        <InfoSaverUSDC />
-        <TheDivider h={true} />
-        <RoadMap />
-        <TheDivider h={true} />
-        <Footer />
+      <VStack minH="800px">
+        <Spacer />
+        <Loading />
+        <Spacer />
       </VStack>
     </>
   );

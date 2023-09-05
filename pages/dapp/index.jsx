@@ -213,7 +213,3 @@ const DappV2 = () => {
 };
 
 export default DappV2;
-
-/*
-
-*/

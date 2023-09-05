@@ -237,7 +237,7 @@ export const loadBasicData = async () => {
     const Clock = GetObjContract(IClock.output.abi, CLOCK_CONTRACT_ADDRESS);
 
     // User
-    const User = GetObjContract(IUser.output.abi, USER_CONTRACT_ADDRESS);
+    let User = GetObjContract(IUser.output.abi, USER_CONTRACT_ADDRESS);
 
     // Test
     const Test = GetObjContract(ITest.output.abi, TEST_CONTRACT_ADDRESS);
