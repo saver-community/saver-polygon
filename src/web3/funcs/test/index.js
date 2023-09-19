@@ -4,9 +4,6 @@ export const TestGetData = async (Test, wallet, cycle) => {
     const play_list = await Test.contract.methods.play_list().call();
     const cycle_start_play_list = await Test.contract.methods.cycle_start_play_list().call();
     const cycle_close_play_list = await Test.contract.methods.cycle_close_play_list().call();
-    console.log("play_list: ", play_list);
-    console.log("Cycle: ", cycle);
-    console.log("Cycle to end play list: ", cycle_close_play_list);
     if (play_list && Number(cycle) < Number(cycle_close_play_list)) {
         const play_list_first_video_id = await Test.contract.methods.play_list_first_video_id().call();
         const play_list_last_video_id = await Test.contract.methods.play_list_last_video_id().call();
