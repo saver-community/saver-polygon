@@ -21,8 +21,10 @@ import {
 import { useProvider } from "../../../src/context";
 import {
   IMG_ABLE_SAVER_LOGO,
+  IMG_FLY_PIG,
   IMG_NFT_TOKEN,
   IMG_SHADOW_DIVIDER,
+  IMG_SHARE_LINK,
   IMG_SINERGY_TREE,
 } from "../../../src/images";
 import { SinergyReward } from "../../../src/components/dapp-v2/sinergyReward";
@@ -156,7 +158,7 @@ const SinergyBronze = () => {
           name="description"
           content="Aplicacion oficial de Able Saver. Sinergy Bronze."
         />
-        <meta name="image" content={IMG_ABLE_SAVER_LOGO} />
+        <meta name="image" content={IMG_SHARE_LINK} />
       </Head>
 
       {/* ALERTA DE CAMBIO DE CICLO */}

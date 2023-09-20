@@ -25,6 +25,7 @@ import {
   IMG_ABLE_SAVER_LOGO,
   IMG_NFT_TOKEN,
   IMG_SHADOW_DIVIDER,
+  IMG_SHARE_LINK,
   IMG_SINERGY_TITLE,
 } from "../../../../../src/images";
 import {
@@ -366,7 +367,7 @@ export default function BuyNFT_Affiliate() {
       <Head>
         <title>Synergy Bronze - Create NFT</title>
         <meta name="description" content="Crea tu NFT." />
-        <meta name="image" content={IMG_ABLE_SAVER_LOGO} />
+        <meta name="image" content={IMG_SHARE_LINK} />
       </Head>
 
       {is_troncal() ? (

@@ -19,7 +19,7 @@ import { LoadAbleRewards } from "../../src/components/dapp-v2/LoadAbleRewards";
 import { PersonalInfo } from "../../src/subPages/dapp-v2/personal-info";
 import { RewardInfo } from "../../src/subPages/dapp-v2/reward-info";
 import { AbleReward } from "../../src/subPages/dapp-v2/ableReward";
-import { IMG_ABLE_SAVER_LOGO, IMG_SHADOW_DIVIDER } from "../../src/images";
+import { IMG_ABLE_SAVER_LOGO, IMG_FLY_PIG, IMG_SHADOW_DIVIDER, IMG_SHARE_LINK } from "../../src/images";
 import { ShowSaverSinergy } from "../../src/subPages/dapp-v2/showSaverSinergy";
 import { MigrationAlert } from "../../src/components/dapp-v2/migrationAlert";
 import { ConnectWallet } from "../../src/components/dapp-v2/connectWallet";
@@ -120,7 +120,7 @@ const DappV2 = () => {
       <Head>
         <title>Able Saver - Dapp</title>
         <meta name="description" content="Aplicacion oficial de Able Saver." />
-        <meta name="image" content={IMG_ABLE_SAVER_LOGO} />
+        <meta name="image" content={IMG_SHARE_LINK} />
       </Head>
       <Box h="15px" bg="black" />
 

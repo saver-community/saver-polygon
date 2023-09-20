@@ -8,7 +8,7 @@ import { getOwnerOfNFT } from "../../../../../src/web3/funcs/sinergy/nft";
 import { BuyAndConnect } from "../../../../../src/subPages/dapp-v2/buy-connect";
 import { NFT_OWNER } from "../../../../../src/subPages/dapp-v2/nft/nftOwner";
 import { NFT_PUBLIC } from "../../../../../src/subPages/dapp-v2/nft/nftPublic";
-import { IMG_ABLE_SAVER_LOGO } from "../../../../../src/images";
+import { IMG_ABLE_SAVER_LOGO, IMG_SHARE_LINK } from "../../../../../src/images";
 import { ConnectWallet } from "../../../../../src/components/dapp-v2/connectWallet";
 import { LoadInfo } from '../../../../../src/components/dapp-v2/loadInfo';
 
@@ -42,7 +42,7 @@ export default function NFT_PAGE() {
       <Head>
         <title>Saver Sinergy - NFT</title>
         <meta name="description" content="Pagina de tu NFT" />
-        <meta name="image" content={IMG_ABLE_SAVER_LOGO} />
+        <meta name="image" content={IMG_SHARE_LINK} />
       </Head>
 
       {addressAccount == null ? (

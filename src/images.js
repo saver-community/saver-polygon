@@ -39,3 +39,7 @@ export const IMG_SAVER_COMMUNITY_TITLE_HORIZONTAL = "https://i.ibb.co/SBR92Tc/Sa
 export const IMG_SAVER_COMMUNTIY_TITLE_VERTICAL = "https://i.ibb.co/ryzvB0j/Saver-Community-Title-Mobile.png";
 export const IMG_COFRE = "https://i.ibb.co/qpb5sBH/cofre.jpg";
 export const IMG_SINERGY_GOLD = "https://i.ibb.co/1sSwmFX/Sinergy-Gold-removebg.png";
+export const IMG_FLY_PIG = "https://i.ibb.co/7nWy32G/chanchito-volador.png";
+
+
+export const IMG_SHARE_LINK = IMG_FLY_PIG;

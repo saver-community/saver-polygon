@@ -15,6 +15,7 @@ import { InfoSaverUSDC } from "../src/subPages/infoSaverUSDC";
 import { RoadMap } from "../src/subPages/roadMap";
 import { Footer } from "../src/subPages/footer";
 import { Loading } from "../src/components/dapp-v2/loading";
+import { IMG_SHARE_LINK } from "../src/images";
 
 const Home = () => {
   // Context
@@ -41,7 +42,7 @@ const Home = () => {
           name="description"
           content="Aplicacion oficial de Saver Community."
         />
-        <meta name="image" content="https://i.ibb.co/z7hxTvw/SAVER-TOKEN.png" />
+        <meta name="image" content={IMG_SHARE_LINK} />
       </Head>
       <VStack minH="800px">
         <Spacer />
