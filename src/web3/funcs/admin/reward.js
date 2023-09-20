@@ -14,7 +14,6 @@ export const AdminGetRewardInfo = async (
     StablecoinContract,
     AbleContract
 ) => {
-    console.log("aca ->", StablecoinContract);
     let start_time = Date.now();
     window.document.getElementById('loading').innerHTML = "Cargando Reward...";
     let promise_reward = null;
