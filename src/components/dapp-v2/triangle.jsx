@@ -285,7 +285,7 @@ export const Triangle = () => {
               fontSize="18px"
               zIndex={6}
             >
-              Podra recibir:
+              PREMIO ABLE:
             </Text>
             <Text
               p="4px"
@@ -295,8 +295,8 @@ export const Triangle = () => {
               fontSize="28px"
               zIndex={6}
             >
-              {Number(BaseReward.POTENCIAL * Number(Able.points.points_of)).toFixed(2)}{" "}
-              {MAIN_CURRENCY}
+              {Number(Able.POTENCIAL_ABLE * Number(Able.points.points_of)).toFixed(2)}{" "}
+              ABLE
             </Text>
           </VStack>
           <Spacer />
