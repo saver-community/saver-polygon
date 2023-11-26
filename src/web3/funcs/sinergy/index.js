@@ -145,12 +145,12 @@ export const getSinergyBronzeData = async (
     const isQualified = Number(amount) > 0;
     const resources = null;
     const amountMinted = await ContractSinergy.methods.GetAmountOfNftMinted().call();
-    window.document.getElementById('loading').innerHTML = "Cargando NFTs de Bronze..";
-    const myNFTs = await getMyNFTs(
-        ContractSinergy, 
-        addressAccount, 
-        amount,
-    );
+    // window.document.getElementById('loading').innerHTML = "Cargando NFTs de Bronze..";
+    // const myNFTs = await getMyNFTs(
+    //     ContractSinergy, 
+    //     addressAccount, 
+    //     amount,
+    // );
     const favouriteNFT_ID = await ContractSinergy.methods.favourite_nft(addressAccount).call();
     let favouriteNFT = {
         id: 0
@@ -194,7 +194,7 @@ export const getSinergyBronzeData = async (
         isQualified: isQualified,
         autoReferenceID: autoReferenceID,
         amountMinted: amountMinted,
-        myNFTs: myNFTs,
+        myNFTs: [],
         favouriteNFT: favouriteNFT,
         haveToRecover: !isRecover,
         nfts_qualified,

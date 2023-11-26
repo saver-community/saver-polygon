@@ -38,7 +38,7 @@ import {
     getSinergyBronzeData_NineReference,
     getSinergyBronzeData_AfterMigrateLevel
 } from "./web3/funcs/sinergy";
-import { getSinergyBronze_AfterSell } from "./web3/funcs/sinergy/nft";
+import { getMyNFTs, getSinergyBronze_AfterSell } from "./web3/funcs/sinergy/nft";
 import { getERC20Info } from "./web3/funcs/tokens";
 import {
     getHistoryQualified,
@@ -249,6 +249,7 @@ export const SaverProvider = (props) => {
         setAble(Able);
         handleCycle(Clock.cycle);
     }
+    
     // 2- Cargar Bronze (Actualizado)
     const loadSinergyBronze = async () => {
         if (Able == null) {
@@ -443,6 +444,22 @@ export const SaverProvider = (props) => {
 
         setClock(clock);
         setTest(Test);
+        handleCycle(clock.cycle);
+    };
+
+    // 7- Cargar NFTs del usuario
+    const loadNftsOfUser = async () => {
+        const clock = await ClockGetInfo(Clock);
+        const nfts = await getMyNFTs(
+            SinergyBronze.contract,
+            addressAccount,
+            SinergyBronze.amount
+        );
+
+        const newSinergyBronze = SinergyBronze;
+        newSinergyBronze.myNFTs = nfts;
+
+        setSinergyBronze(newSinergyBronze);
         handleCycle(clock.cycle);
     };
 
@@ -1236,7 +1253,8 @@ export const SaverProvider = (props) => {
         AdminLoadConfidenceReward,
         AdminLoadBaseReward,
         AdminLoadClock,
-        setTest
+        setTest,
+        loadNftsOfUser
     };
 
     return <SaverContext.Provider value={values} {...props} />

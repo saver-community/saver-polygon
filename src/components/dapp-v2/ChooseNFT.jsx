@@ -21,7 +21,8 @@ import {
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogBody,
-  AlertDialogFooter
+  AlertDialogFooter,
+  Spinner,
 } from "@chakra-ui/react";
 import { useProvider } from "../../context";
 import {
@@ -52,9 +53,17 @@ export const ChooseNFT = () => {
     addressAccount,
     SinergyBronze,
     uploadChooseFavouriteNFT_Bronze,
+    loadNftsOfUser,
   } = useProvider();
 
   // Methods
+  const handleOpen = async () => {
+    setLoading(true);
+    await loadNftsOfUser();
+    setLoading(false);
+    onOpen();
+  };
+
   const showCheckImg = (nft) => {
     return nftSelected == null
       ? nft.id == SinergyBronze.favouriteNFT.id
@@ -104,7 +113,7 @@ export const ChooseNFT = () => {
               window.document.getElementById("loading").innerHTML =
                 "Esperando confirmacion de Red...";
             }
-            
+
             if (rec) {
               clearInterval(interval);
               await uploadChooseFavouriteNFT_Bronze();
@@ -134,8 +143,8 @@ export const ChooseNFT = () => {
   // Component
   return (
     <>
-    {/* Alerta de Transaccion Exitosa */}
-    <AlertDialog
+      {/* Alerta de Transaccion Exitosa */}
+      <AlertDialog
         isOpen={showFinalMessage}
         leastDestructiveRef={cancelRef}
         onClose={() => setShowFinalMessage(false)}
@@ -232,7 +241,8 @@ export const ChooseNFT = () => {
                           </Button>
                           <Box w="70px" />
                           <Text color="white">
-                            {Number(nft.activeRewardsClaimed).toFixed(2)} {MAIN_CURRENCY}
+                            {Number(nft.activeRewardsClaimed).toFixed(2)}{" "}
+                            {MAIN_CURRENCY}
                           </Text>
                           <Box w="10px" />
                         </HStack>
@@ -291,7 +301,8 @@ export const ChooseNFT = () => {
                           </Button>
                           <Box w="70px" />
                           <Text color="white">
-                            {Number(nft.activeRewardsClaimed).toFixed(2)} {MAIN_CURRENCY}
+                            {Number(nft.activeRewardsClaimed).toFixed(2)}{" "}
+                            {MAIN_CURRENCY}
                           </Text>
                           <Box w="10px" />
                         </HStack>
@@ -319,15 +330,15 @@ export const ChooseNFT = () => {
                 {SinergyBronze.myNFTs.map((nft, idx) => {
                   return (
                     <VStack w="full" key={idx}>
-                      <Text color="white" fontSize='16px' fontWeight='bold'>
-                          {nft.name} {`(ID: ${nft.id})`}
-                        </Text>
+                      <Text color="white" fontSize="16px" fontWeight="bold">
+                        {nft.name} {`(ID: ${nft.id})`}
+                      </Text>
                       <HStack w="full">
                         <Box w="15px" />
-                        <Text color='white'>
-                          {
-                            showCheckImg(nft) ? "NFT Seleccionado" : "Seleccionar NFT"
-                          }
+                        <Text color="white">
+                          {showCheckImg(nft)
+                            ? "NFT Seleccionado"
+                            : "Seleccionar NFT"}
                         </Text>
                         <Spacer />
                         {showCheckImg(nft) ? (
@@ -347,7 +358,7 @@ export const ChooseNFT = () => {
                             cursor="pointer"
                           />
                         )}
-                        <Box w='15px' />
+                        <Box w="15px" />
                       </HStack>
                       <HStack w="full">
                         <Box w="15px" />
@@ -368,7 +379,7 @@ export const ChooseNFT = () => {
                       <Text color="white">Link de Referencia:</Text>
                       <HStack w="full">
                         <Box w="15px" />
-                        <Text color="white" fontSize='10px'>
+                        <Text color="white" fontSize="10px">
                           {URL_WEB}/dapp/sinergyBronze/buyNFT/{nft.id}
                         </Text>
                         <Spacer />
@@ -422,18 +433,22 @@ export const ChooseNFT = () => {
         </ModalOverlay>
       </Modal>
 
-      <Button
-        bg="blue.600"
-        color="white"
-        w="100px"
-        _hover={{
-          boxShadow: "1px 1px 100px #fff",
-          transform: "scale(1.1)",
-        }}
-        onClick={onOpen}
-      >
-        Elegir NFT
-      </Button>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Button
+          bg="blue.600"
+          color="white"
+          w="100px"
+          _hover={{
+            boxShadow: "1px 1px 100px #fff",
+            transform: "scale(1.1)",
+          }}
+          onClick={handleOpen}
+        >
+          Elegir NFT
+        </Button>
+      )}
     </>
   );
 };

@@ -56,7 +56,7 @@ export const getMyNFTs = async (
 
     // Get the struct of these NFTs.
     for (var i = 0; i < myNftIDs.length; i++) {
-        const nft = await getBasicNFT(
+        const nft = await getBasicNFT_ToShowOnList(
             ContractNFT,
             myNftIDs[i]
         );
@@ -65,6 +65,24 @@ export const getMyNFTs = async (
 
     return myNFTs;
 };
+
+export const getBasicNFT_ToShowOnList = async (Contract, tokenID) => {
+    let ownerAddress = null;
+    try {
+        ownerAddress = await Contract.methods.ownerOf(tokenID).call();
+    } catch (err) {
+        console.log("ERROR: ", err);
+        ownerAddress = NULL_ADDRESS;
+    }
+
+    // Obtenemos la informacion del contrato actual.
+    const data = await getNFT_ToShowOnList(Contract, tokenID);
+
+    data.ownerAddress = ownerAddress;
+    data.isRecover = true;
+
+    return data;
+}
 
 export const getBasicNFT = async (Contract, tokenID) => {
     let ownerAddress = null;
@@ -75,19 +93,11 @@ export const getBasicNFT = async (Contract, tokenID) => {
         ownerAddress = NULL_ADDRESS;
     }
 
-    const isRecover = true; //await MigrationContract.methods.isRecover(ownerAddress).call();
-
-    let data = null;
-
     // Obtenemos la informacion del contrato actual.
-    data = await getNFTBasicInfo(Contract, tokenID);
-    const activeRewardsClaimedWEI = await Contract.methods.nft_affiliate_rewards_earned(tokenID).call();
-    const activeRewardsClaimed = web3.utils.fromWei(activeRewardsClaimedWEI, 'ether');
-    data.activeRewardsClaimed = activeRewardsClaimed;
-
+    const data = await getNFTBasicInfo(Contract, tokenID);
 
     data.ownerAddress = ownerAddress;
-    data.isRecover = isRecover;
+    data.isRecover = true;
 
     return data;
 }
@@ -603,6 +613,7 @@ export const getNFT = async (
         can_selling_by_time
     };
 
+    window.document.getElementById('loading').innerHTML = "Cargando Referencias del NFT Favorito";
     const references = await getBasicReferences(ContractNFT, tokenID);
     const timestampCreated = await ContractNFT.methods.get_nft_timestamp_created(tokenID).call();
     const dateCreated = unixToDate(timestampCreated);
@@ -622,6 +633,31 @@ export const getNFT = async (
     };
 };
 
+const getNFT_ToShowOnList = async (Contract, tokenID) => {
+    const name = await Contract.methods.get_nft_name(tokenID).call();
+    const reference = await Contract.methods.get_nft_reference(tokenID).call();
+    const activeRewardsClaimedWEI = await Contract.methods.nft_affiliate_rewards_earned(tokenID).call();
+    const activeRewardsClaimed = web3.utils.fromWei(activeRewardsClaimedWEI, 'ether');
+
+    return {
+        id: tokenID,
+        name,
+        inscription: "",
+        valueProposal: "",
+        imageURL: "",
+        references: {
+            total: 0
+        },
+        reference,
+        dateCreated: "",
+        selling: {
+            able: 0,
+            triple: 0
+        },
+        activeRewardsClaimed
+    }
+};
+
 const getNFTBasicInfo = async (Contract, tokenID) => {
     const name = await Contract.methods.get_nft_name(tokenID).call();
     const inscription = await Contract.methods.get_nft_inscription(tokenID).call();
@@ -631,6 +667,8 @@ const getNFTBasicInfo = async (Contract, tokenID) => {
     const totalAmountReferences = await Contract.methods.get_total_amount_references(tokenID).call();
     const timestampCreated = await Contract.methods.get_nft_timestamp_created(tokenID).call();
     const dateCreated = unixToDate(timestampCreated);
+    const activeRewardsClaimedWEI = await Contract.methods.nft_affiliate_rewards_earned(tokenID).call();
+    const activeRewardsClaimed = web3.utils.fromWei(activeRewardsClaimedWEI, 'ether');
 
     return {
         id: tokenID,
@@ -646,7 +684,8 @@ const getNFTBasicInfo = async (Contract, tokenID) => {
         selling: {
             able: 0,
             triple: 0
-        }
+        },
+        activeRewardsClaimed
     }
 };
 
