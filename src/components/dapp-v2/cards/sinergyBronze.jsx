@@ -691,7 +691,7 @@ export const SinergyBronzeCard = ({ nft, owner }) => {
                       </Text>
                       <Spacer />
                       <Text fontWeight="bold" color="white">
-                        {nft.stable_coin_earned_by_able_sale} {MAIN_CURRENCY}
+                        {Number(nft.stable_coin_earned_by_able_sale).toFixed(2)} {MAIN_CURRENCY}
                       </Text>
                       <Box w="5px" />
                     </HStack>
@@ -841,7 +841,7 @@ export const SinergyBronzeCard = ({ nft, owner }) => {
               <HStack w="full">
                 <Box w="5px" />
                 <Text fontWeight="bold" color="white">
-                  {nft.activeRewardsClaimed} {MAIN_CURRENCY}{" "}
+                  {Number(nft.activeRewardsClaimed).toFixed(2)} {MAIN_CURRENCY}{" "}
                   {Number(nft.activeRewardsClaimed) > 1 ? "s" : ""} en
                   Recompensas Afiliacion
                 </Text>
@@ -849,7 +849,7 @@ export const SinergyBronzeCard = ({ nft, owner }) => {
               <HStack w="full">
                 <Box w="5px" />
                 <Text fontWeight="bold" color="white">
-                  {nft.stable_coin_earned_by_able_sale} {MAIN_CURRENCY}{" "}
+                  {Number(nft.stable_coin_earned_by_able_sale).toFixed(2)} {MAIN_CURRENCY}{" "}
                   {Number(nft.stable_coin_earned_by_able_sale) > 1 ? "s" : ""}{" "}
                   en Venta de ABLE
                 </Text>
