@@ -20,8 +20,6 @@ import {
 } from "@chakra-ui/react";
 import { useProvider } from "../../../src/context";
 import {
-  IMG_ABLE_SAVER_LOGO,
-  IMG_FLY_PIG,
   IMG_NFT_TOKEN,
   IMG_SHADOW_DIVIDER,
   IMG_SHARE_LINK,

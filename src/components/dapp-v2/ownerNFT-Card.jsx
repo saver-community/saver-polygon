@@ -383,7 +383,7 @@ export const OwnerNFT_Card = ({ nft }) => {
         <HStack w="full">
           <Box w="5px" />
           <Heading color="white">
-            Ganacias de Afiliacion: {nft.activeRewardsClaimed} {MAIN_CURRENCY}
+            Ganacias de Afiliacion: {Number(nft.activeRewardsClaimed).toFixed(2)} {MAIN_CURRENCY}
           </Heading>
           <Spacer />
         </HStack>

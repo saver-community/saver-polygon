@@ -19,6 +19,7 @@ export default function NFT_PAGE() {
 
   const [isOwner, setIsOwner] = React.useState(false);
   const [runEffect, setRunEffect] = React.useState(false);
+  const [refLoaded, setRefLoaded] = React.useState(false);
 
   // Context
   const { addressAccount, SinergyBronze, loadSinergyBronze_OwnerNFT } = useProvider();
@@ -26,7 +27,6 @@ export default function NFT_PAGE() {
   // Methods
   React.useEffect(() => {
     if (addressAccount != null && !runEffect) {
-      console.log("tokenID: ", tokenID);
       setRunEffect(true);
       getOwnerOfNFT(SinergyBronze.contract, tokenID).then((address) => {
         if (String(address).toLowerCase() == String(addressAccount).toLowerCase()) {
@@ -34,6 +34,9 @@ export default function NFT_PAGE() {
         }
       });
     }
+
+
+
   }); // [addressAccount, runEffect, SinergyBronze.contract, tokenID]
 
   // Component

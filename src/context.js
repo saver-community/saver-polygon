@@ -10,12 +10,9 @@ import {
     AbleGetAbleRewardInfo,
     AbleGetPointsInfo,
     getAbleData,
-    getAbleData_AfterAbleReward,
     getAbleData_AfterBuyCDA,
     getAbleData_AfterChangePorpouses,
     getAbleData_AfterMigrate,
-    getAbleData_AfterReward,
-    getAbleData_AfterVideoTest,
 } from "./web3/funcs/able";
 import { getSinergySaleData, getSinergySaleData_AfterBuyAble } from "./web3/funcs/able/sale";
 import { getAbleCloseCyclesEventsInfo, getAbleCyclesChangesEventsInfo, getAbleEventsInfo, getAblePointsEventsInfo, getAbleRewardEventsInfo, getAbleSaleEventsInfo, getAbleStableCoinRewardEventsInfo, getAbleUpdatesEventsInfo, getAbleUserQualificationEventsInfo, getAbleVideoEventsInfo, getEventsInfo, getSinergyEventsInfo, getUsdcEventsInfo } from "./web3/funcs/events";
@@ -25,7 +22,6 @@ import {
     getSinergyBronzeData_AfterChooseFavouriteNFT,
     getSinergyBronzeData_AfterMigrate,
     getSinergyBronzeData_AfterModifyNFT,
-    getSinergyBronzeData_AfterReward,
     getSinergyBronzeData_ForAble,
     getSinergyBronzeData_FirstReference,
     getSinergyBronzeData_SecondReference,
@@ -38,25 +34,16 @@ import {
     getSinergyBronzeData_NineReference,
     getSinergyBronzeData_AfterMigrateLevel
 } from "./web3/funcs/sinergy";
-import { getMyNFTs, getSinergyBronze_AfterSell } from "./web3/funcs/sinergy/nft";
+import { CompleteNftsWithBasicInfo, getMyNFTs, getSinergyBronze_AfterSell } from "./web3/funcs/sinergy/nft";
 import { getERC20Info } from "./web3/funcs/tokens";
 import {
-    getHistoryQualified,
     getQualifiedInfo,
-    getQualifiedInfo_AfterAbleReward,
-    getQualifiedInfo_AfterBuyCDA,
-    getQualifiedInfo_AfterBuyNFT,
-    getQualifiedInfo_AfterReward,
-    getQualifiedInfo_AfterVideoTest,
-    getQualifiedInfo_ForSinergySilver
 } from "./web3/funcs/user/qualified";
 import {
     getRecoverInfo
 } from './web3/funcs/sinergy/recover';
-import { getVideosData } from "./web3/funcs/able/video";
-import { getActualTimestamp, getRewardInfo as getAbleRewardsInfo } from "./web3/funcs/able/reward";
+import { getRewardInfo as getAbleRewardsInfo } from "./web3/funcs/able/reward";
 import { getRewardInfo as getSinergyRewardsInfo } from "./web3/funcs/sinergy/reward";
-import { getAbleEvents } from "./web3/funcs/events/able";
 import { ClockGetInfo } from "./web3/funcs/clock";
 import { UserGetData, UserGetHistoryQualified } from './web3/funcs/user';
 import { TestGetData, TestGetVideo } from './web3/funcs/test';
@@ -249,7 +236,7 @@ export const SaverProvider = (props) => {
         setAble(Able);
         handleCycle(Clock.cycle);
     }
-    
+
     // 2- Cargar Bronze (Actualizado)
     const loadSinergyBronze = async () => {
         if (Able == null) {
@@ -337,9 +324,14 @@ export const SaverProvider = (props) => {
                 basicData.Clock.cycle
             );
 
+            const nfts = await CompleteNftsWithBasicInfo(data.contract, data.myNFTs);
+        
+            const newSinergyBronze = data;
+            newSinergyBronze.myNFTs = nfts;
+
             setBasicData(basicData);
             setUser(user);
-            setSinergyBronze(data);
+            setSinergyBronze(newSinergyBronze);
             setAble(able);
             handleCycle(basicData.Clock.cycle);
             setValueReward(value);
@@ -462,6 +454,18 @@ export const SaverProvider = (props) => {
         setSinergyBronze(newSinergyBronze);
         handleCycle(clock.cycle);
     };
+
+    // 8- Cargar NFTs para mostrar en el arbol de referencias.
+    const loadNftsToShowOnTree = async () => {
+        const clock = await ClockGetInfo(Clock);
+        const nfts = await CompleteNftsWithBasicInfo(SinergyBronze.contract, SinergyBronze.myNFTs);
+        
+        const newSinergyBronze = SinergyBronze;
+        newSinergyBronze.myNFTs = nfts;
+
+        setSinergyBronze(newSinergyBronze);
+        handleCycle(clock.cycle);
+    }
 
     // Funciones de Recarga (ABLE):
 
@@ -954,6 +958,12 @@ export const SaverProvider = (props) => {
         const min_users_to_claim = await ConstancyReward.stablecoin.contract.methods.AMOUNT_USERS_NEED_TO_CLAIM().call();
         constancy.min_users_to_claim = min_users_to_claim;
 
+        const nfts = await CompleteNftsWithBasicInfo(SinergyBronze.contract, SinergyBronze.myNFTs);
+        
+        const newSinergyBronze = SinergyBronze;
+        newSinergyBronze.myNFTs = nfts;
+
+        setSinergyBronze(newSinergyBronze);
         setClock(clock);
         setValueReward(value);
         setConstancyReward(constancy);
@@ -1254,7 +1264,8 @@ export const SaverProvider = (props) => {
         AdminLoadBaseReward,
         AdminLoadClock,
         setTest,
-        loadNftsOfUser
+        loadNftsOfUser,
+        loadNftsToShowOnTree
     };
 
     return <SaverContext.Provider value={values} {...props} />

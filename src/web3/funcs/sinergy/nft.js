@@ -66,6 +66,19 @@ export const getMyNFTs = async (
     return myNFTs;
 };
 
+export const CompleteNftsWithBasicInfo = async (
+    Contract,
+    myNFTs
+) => {
+    let nfts = [];
+    for (let i = 0; i < myNFTs.length; i++) {
+        const nft = myNFTs[i];
+        const basicNft = await getBasicNFT(Contract, nft.id);
+        nfts.push(basicNft);
+    }
+    return nfts;
+}
+
 export const getBasicNFT_ToShowOnList = async (Contract, tokenID) => {
     let ownerAddress = null;
     try {
